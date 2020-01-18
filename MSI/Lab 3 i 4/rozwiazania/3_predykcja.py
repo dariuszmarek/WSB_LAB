@@ -1,3 +1,6 @@
+import os
+os.environ["KERAS_BACKEND"] = "plaidml.keras.backend"
+
 from keras.models import load_model
 from resize_image import resize_image
 from imutils import paths
@@ -9,7 +12,7 @@ import pickle
 
 MODEL_FILENAME = "model_nn.hdf5"
 MODEL_LABELS_FILENAME = "model_labels.dat"
-IMAGE = "T36H.png"
+IMAGE = "obraz.png"
 PIXEL_MARGIN = 3
 IMAGE_SIZE_X = 20
 IMAGE_SIZE_Y = 20
