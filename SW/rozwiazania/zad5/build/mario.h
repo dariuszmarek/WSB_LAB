@@ -1,0 +1,1 @@
+#define mario 0
