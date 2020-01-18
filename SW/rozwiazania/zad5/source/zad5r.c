@@ -167,6 +167,7 @@ int main( int argc, char **argv ){
 //--------------------------------------------------------
 
 
+		// zmiana wyswietlanego obrazu co 30 klatek
 		if (counter <= 0)
 		{
 			counter = 30;

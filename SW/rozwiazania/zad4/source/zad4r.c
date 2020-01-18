@@ -202,6 +202,8 @@ int main(int argc, char **argv)
 		{
 			exit(0);
 		}
+
+		// zresetowanie kolorow pol i przejscie w tryb sprawdzania wzorca
 		if (WPAD_ButtonsDown(0) & WPAD_BUTTON_A)
 		{
 			create_pattern = false;
@@ -229,20 +231,29 @@ int main(int argc, char **argv)
 		guMtxIdentity(model);
 
 		// ---------------------------------------------------
+		// Sprawdzenie czy jestesmy w trybie pobierania wzorca i czy nie pobraliśmy już 9 pol
 		iter = 0;
 		if(pattern_iter < 9 && create_pattern)
 		{
+			// przejscie po wyszytkich polach
 			for (int i = 0; i < 3; i++)
 			{
 				for (int j = 0; j < 3; j++)
 				{
+					//sprawdzenie czy pozycja wskaznika jest wewnatrz pola
 					if(quads[iter].x <= (int)ir.x && quads[iter].x + quads[iter].width >= (int)ir.x && quads[iter].y <= (int)ir.y &&  quads[iter].y +  quads[iter].height >= (int)ir.y)
 					{
+						// sprawdzenie czy pole, na ktorym jest wskaznik nie jest ostatnio najechanym polem 
+						// (w razie gdby ktos stal na jednym polu caly czas)
 						if (pattern_last_id != quads[iter].id)
 						{
+							// zapisanie ostatniego pola na ktorym stalismy na obecny
 							pattern_last_id = quads[iter].id;
+							// ustawienie numeru pola w talicy wzorca
 							pattern[pattern_iter] = pattern_last_id;
+							// inkrementacja licznika przechowujacego liczbe z numerem wzorca ktory ma byc zapisany w kolejnym kroku
 							pattern_iter++;
+							// zmiana koloru pola 
 							quads[iter].color[0] = BoxColors[2][0];
 							quads[iter].color[1] = BoxColors[2][1];
 							quads[iter].color[2] = BoxColors[2][2];
@@ -254,17 +265,26 @@ int main(int argc, char **argv)
 		}
 
 		iter = 0;
+		// Sprawdzenie czy jestesmy w trybie pobierania odczytu wzorca i czy nie pobraliśmy już 9 pol
 		if(!create_pattern && test_pattern_iter < 9)
 		{	
+			// przejscie po wyszytkich polach
 				for (int i = 0; i < 3; i++)
 				{
 					for (int j = 0; j < 3; j++)
 					{
+						//sprawdzenie czy pozycja wskaznika jest wewnatrz pola
 						if(quads[iter].x <= (int)ir.x && quads[iter].x + quads[iter].width >= (int)ir.x && quads[iter].y <= (int)ir.y &&  quads[iter].y +  quads[iter].height >= (int)ir.y)
 						{
+							// sprawdzenie czy pole, na ktorym jest wskaznik nie jest ostatnio najechanym polem 
+							// (w razie gdby ktos stal na jednym polu caly czas)
 							if (pattern_last_id != quads[iter].id )
 							{
+								// sprawdzenie czy w tablicy z wzorcami znajduje sie obecne pole w miejscu 
+								// o id test_pattern_iter
 								pattern_last_id = quads[iter].id ;
+
+								// zmiana koloru pola zaleznie od poprawnego najechania lub nie
 								if (pattern[test_pattern_iter] == quads[iter].id)
 								{
 									quads[iter].color[0] = BoxColors[3][0];
