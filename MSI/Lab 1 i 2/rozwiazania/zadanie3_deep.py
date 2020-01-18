@@ -7,7 +7,7 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.utils import np_utils
 
 
-nb_epoch = 7
+nb_epoch = 10
 batch_size = 128
 nb_classes = 10
 

@@ -1,3 +1,9 @@
+
+import os
+os.environ["KERAS_BACKEND"] = "plaidml.keras.backend"
+
+
+
 import cv2
 import pickle
 import os.path

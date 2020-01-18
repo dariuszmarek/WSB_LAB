@@ -77,7 +77,10 @@ for (i, image_file) in enumerate(image_files):
 
         # Zapis znaku pliku
         # TODO:1.3
-        cv2.imwrite(p, letter_image)
+        try:
+            cv2.imwrite(p, letter_image)
+        except:
+            pass
 
         # inkrementacja licznika okreslonego typu znakow
         counts[letter_text] = count + 1
