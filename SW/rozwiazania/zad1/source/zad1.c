@@ -170,7 +170,8 @@ void *gp_fifo = NULL;
 		}
 
 
-
+		// Obliczenie pozycji wskaznika (WPAD) w tablicy jedno wymiarowej z danych
+		// tablicy 2 wymiarowej (Ekran) i ustawienie wartości na True 
 		*(map + (int)ir.x * rmode->efbHeight + (int)ir.y) = true;
 
 	// ---------------------------------------------------
@@ -182,6 +183,8 @@ void *gp_fifo = NULL;
 
 
 
+		// Przejście po tablicy jednowymiarowej i wysiwetlanie kwadratu 3x3 
+		// jezeli w tablicy znajduje sie wartosc True
 		for (int i = 1; i < rmode->fbWidth; i++)
 		{
 			for (int j = 1; j < rmode->efbHeight; j++)

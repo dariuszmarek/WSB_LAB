@@ -137,6 +137,8 @@ int main(int argc, char **argv)
 
 	// ---------------------------------------------------
 
+		// Obliczenie pozycji wskaznika (WPAD) w tablicy jedno wymiarowej z danych
+		// tablicy 2 wymiarowej (Ekran) i ustawienie wartości licznika na 120
 		*(map + (int)ir.x * rmode->efbHeight + (int)ir.y) = 120;
 
 	// ---------------------------------------------------
@@ -150,6 +152,9 @@ int main(int argc, char **argv)
 
 
 
+		// Przejście po tablicy jednowymiarowej i wyswietlanie kwadratu 3x3 
+		// jezeli w tablicy (tablica przechowuje liczniki) znajduje sie wartosc wieksza od 0
+		// nastpęnie dekrementacja wartości licznika
 		for (int i = 1; i < rmode->fbWidth; i++)
 		{
 			for (int j = 1; j < rmode->efbHeight; j++)
